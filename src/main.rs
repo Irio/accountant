@@ -4,7 +4,7 @@ fn main() {
     let income = 85_000;
     println!("Taxable income: US${}", income);
 
-    let profile = accountant::structs::TaxProfile {
+    let profile = accountant::TaxProfile {
         filing_status: "single_filers",
         taxable_income: 85_000,
         state: "",

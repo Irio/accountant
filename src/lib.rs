@@ -1,11 +1,10 @@
-pub mod structs;
+mod structs;
+pub use structs::*;
 
 pub mod federal_income_tax {
-    use structs::*;
-
     const TAX_BRACKETS: [f32; 7] = [0.1, 0.15, 0.25, 0.28, 0.33, 0.35, 0.396];
 
-    pub fn rate(profile: TaxProfile) -> Option<f32> {
+    pub fn rate(profile: ::TaxProfile) -> Option<f32> {
         let income_ceilings = match profile.filing_status {
             "single_filers" =>
                 [9_075, 36_900, 89_350, 186_350, 405_100, 406_750],
