@@ -1,11 +1,10 @@
 extern crate accountant;
-mod structs;
 
 fn main() {
     let income = 85_000;
     println!("Taxable income: US${}", income);
 
-    let profile = structs::TaxProfile {
+    let profile = accountant::structs::TaxProfile {
         filing_status: "single_filers",
         taxable_income: 85_000,
         state: "",

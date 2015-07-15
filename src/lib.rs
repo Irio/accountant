@@ -1,4 +1,4 @@
-mod structs;
+pub mod structs;
 
 pub mod federal_income_tax {
     use structs::*;
