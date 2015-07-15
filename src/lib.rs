@@ -1,8 +1,12 @@
+mod structs;
+
 pub mod federal_income_tax {
+    use structs::*;
+
     const TAX_BRACKETS: [f32; 7] = [0.1, 0.15, 0.25, 0.28, 0.33, 0.35, 0.396];
 
-    pub fn rate(filing_status: &str, taxable_income: u32) -> Option<f32> {
-        let income_ceilings = match filing_status {
+    pub fn rate(profile: TaxProfile) -> Option<f32> {
+        let income_ceilings = match profile.filing_status {
             "single_filers" =>
                 [9_075, 36_900, 89_350, 186_350, 405_100, 406_750],
             "married_filing_jointly" | "qualified_widow" =>
@@ -15,7 +19,7 @@ pub mod federal_income_tax {
         };
 
         let ceiling_for_income =
-            income_ceilings.iter().find(|&ceiling| taxable_income <= *ceiling);
+            income_ceilings.iter().find(|&ceiling| profile.taxable_income <= *ceiling);
         let index = match ceiling_for_income {
             Some(value) => income_ceilings.iter().position(|x| x == value),
             None => Some(TAX_BRACKETS.len() - 1),
