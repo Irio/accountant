@@ -2,3 +2,7 @@
 name = "accountant"
 version = "0.1.0"
 authors = ["Irio Musskopf <iirineu@gmail.com>"]
+
+[dependencies]
+csv = "0.14"
+rustc-serialize = "0.3"
